@@ -1,6 +1,6 @@
 # Recipe-organizer
 
-##Problem statement
+## Problem statement
 Effective recipe management can be difficult, particularly if you have a big collection. It is difficult for users to efficiently organize, locate, and retrieve recipes. Difficulties include the inability to locate particular recipes, ineffective storage, a lack of options for categorization,  and the laborious human entering of recipe data.
 
 ## Solution statement
