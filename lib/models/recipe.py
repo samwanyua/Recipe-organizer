@@ -3,8 +3,7 @@ from sqlite3 import Error
 from typing import List, Tuple
 
 class Recipe:
-    def __init__(self, id: int, title: str, instructions: str, category_id: int, cuisine_type: str,
-                 meal_type: str, dietary_preferences: str, special_diets: str, allergens: str, user_id: int):
+    def __init__(self, id=None, title=None, instructions=None, category_id=None, cuisine_type=None, meal_type=None, dietary_preferences=None, special_diets=None, allergens=None, user_id=None):
         self.id = id
         self.title = title
         self.instructions = instructions

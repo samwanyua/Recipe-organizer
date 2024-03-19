@@ -1,5 +1,5 @@
 import sys
-from models.init import RecipeDB
+from models.init import RecipeDB, Recipe
 
 
 def main():
@@ -91,6 +91,8 @@ def create_recipe(db):
                         special_diets=special_diets, allergens=allergens, user_id=user_id)
     db.add_recipe(new_recipe)
     print("Recipe created successfully!")
+
+
 
 def update_recipe(db):
     print("Updating an existing recipe:")

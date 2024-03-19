@@ -28,6 +28,18 @@ class RecipeDB:
             recipes = [Recipe(*row) for row in rows]
             conn.close()
             return recipes
+    def add_recipe(self, recipe):
+        conn = self.create_connection()
+        if conn is not None:
+            cur = conn.cursor()
+            cur.execute("""
+                INSERT INTO recipe (title, instructions, category_id, cuisine_type, meal_type, dietary_preferences, special_diets, allergens, user_id)
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
+            """, (recipe.title, recipe.instructions, recipe.category_id, recipe.cuisine_type, recipe.meal_type, recipe.dietary_preferences, recipe.special_diets, recipe.allergens, recipe.user_id))
+            conn.commit()
+            conn.close()
+        else:
+            print("Error: Unable to establish database connection.")
 
 
 if __name__ == "__main__":
