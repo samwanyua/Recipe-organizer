@@ -1,6 +1,5 @@
 import sys
-# from models.init import RecipeDB
-from models.init import Recipe, RecipeDB
+from models.init import RecipeDB
 
 
 def main():

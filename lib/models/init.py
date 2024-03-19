@@ -1,6 +1,10 @@
 import sqlite3
 from sqlite3 import Error
-from recipe import Recipe, Category, Ingredient, RecipeIngredient, User
+from models.recipe import Recipe
+from models.recipe import Category
+from models.recipe import Ingredient
+from models.recipe import RecipeIngredient
+from models.recipe import User
 from typing import List, Tuple
 
 class RecipeDB:
