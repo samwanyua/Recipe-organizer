@@ -1,6 +1,5 @@
 from models.init import RecipeDB
-from models import Category, Ingredient, Recipe, User
-
+from models.init import Category, Ingredient, Recipe, User
 def seed_database(db):
     # Seed categories
     categories = [
