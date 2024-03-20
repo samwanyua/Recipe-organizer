@@ -85,6 +85,17 @@ class RecipeDB:
         else:
             print("Error: Unable to establish database connection.")
 
+    def delete_recipe(self, recipe_id: int):
+        conn = self.create_connection()
+        if conn is not None:
+            cur = conn.cursor()
+            cur.execute("DELETE FROM recipe WHERE id=?", (recipe_id,))
+            conn.commit()
+            conn.close()
+            print("Recipe deleted successfully!")
+        else:
+            print("Error: Unable to establish database connection.")
+
     def add_category(self, category):
         conn = self.create_connection()
         if conn is not None:
