@@ -112,3 +112,18 @@ if __name__ == "__main__":
     recipes = db.get_recipes()
     for recipe in recipes:
         print(recipe.title)
+
+INSERT INTO recipe (title, instructions, category_id, cuisine_type, meal_type, dietary_preferences, special_diets, allergens, user_id)
+VALUES ('Scrambled Eggs', 'Cook beaten eggs in a skillet until desired consistency, seasoning with salt and pepper.', 1, 'American', 'Breakfast', '', '', '', 1),
+    ('Chicken Stir Fry', 'Brown diced chicken in a pan, stir-fry with vegetables and soy sauce, then serve over rice.', 2, 'Asian', 'Dinner', '', '', '', 2),
+    ('Spaghetti Carbonara', 'Toss cooked spaghetti with crispy bacon, eggs, Parmesan cheese, and black pepper until creamy.', 3, 'Italian', 'Dinner', '', '', '', 3),
+    ('Vegetable Soup', ' Simmer diced vegetables in broth until tender, seasoning with salt, pepper, and herbs.', 4, 'International', 'Lunch', '', '', '', 4),
+    ('Chocolate Brownies', 'Mix melted chocolate with sugar, eggs, vanilla, flour, and cocoa powder, then bake until set.', 5, 'Dessert', 'Dessert', '', '', '', 5),
+    ('Caesar Salad', 'Toss romaine lettuce with croutons, Parmesan cheese, and Caesar dressing.', 6, 'American', 'Lunch', '', '', '', 6),
+    ('Sushi Rolls', 'Roll sushi rice and fillings in nori sheets, slice, and serve with soy sauce and wasabi.', 7, 'Asian', 'Dinner', '', '', '', 7),
+    ('Tacos', ' Fill tortillas with seasoned beef, lettuce, tomatoes, cheese, and salsa.', 8, 'Mexican', 'Dinner', '', '', '', 8),
+    ('Grilled Cheese Sandwich', 'Cook buttered bread slices with cheese until golden and melted.', 9, 'American', 'Lunch', '', '', '', 9),
+    ('Mushroom Risotto', 'Sauté onions and garlic, cook Arborio rice in broth, stir in mushrooms until creamy.', 10, 'Italian', 'Dinner', '', '', '', 10),
+    ('Fruit Smoothie', 'Blend mixed fruits with yogurt or juice until smooth.', 11, 'International', 'Breakfast', '', '', '', 11),
+    ('BBQ Ribs', 'Grill seasoned ribs until cooked, basting with BBQ sauce.', 12, 'American', 'Dinner', '', '', '', 12),
+    ('Caprese Salad', 'Layer tomato and mozzarella slices, drizzle with olive oil and balsamic glaze, then garnish with basil.', 'Lunch', '', '', '', 13);
