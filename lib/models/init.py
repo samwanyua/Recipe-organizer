@@ -41,6 +41,16 @@ class RecipeDB:
         else:
             print("Error: Unable to establish database connection.")
 
+    def add_category(self, category):
+        conn = self.create_connection()
+        if conn is not None:
+            cur = conn.cursor()
+            cur.execute("INSERT INTO category (id, name) VALUES (?, ?)", (category.id, category.name))
+            conn.commit()
+            conn.close()
+        else:
+            print("Error: Unable to establish database connection.")
+
 
 if __name__ == "__main__":
     db = RecipeDB('recipe.db')
