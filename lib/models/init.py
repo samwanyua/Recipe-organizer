@@ -28,6 +28,33 @@ class RecipeDB:
             recipes = [Recipe(*row) for row in rows]
             conn.close()
             return recipes
+        
+    def get_recipe_by_title(self, title: str) -> Recipe:
+        conn = self.create_connection()
+        if conn is not None:
+            cur = conn.cursor()
+            cur.execute("SELECT * FROM recipe WHERE title=?", (title,))
+            row = cur.fetchone()
+            if row:
+                return Recipe(*row)
+            else:
+                return None
+        else:
+            return None
+        
+    def get_recipe_by_id(self, recipe_id: int) -> Recipe:
+        conn = self.create_connection()
+        if conn is not None:
+            cur = conn.cursor()
+            cur.execute("SELECT * FROM recipe WHERE id=?", (recipe_id,))
+            row = cur.fetchone()
+            if row:
+                return Recipe(*row)
+            else:
+                return None
+        else:
+            return None
+        
     def add_recipe(self, recipe):
         conn = self.create_connection()
         if conn is not None:
