@@ -1,7 +1,7 @@
 import sys 
 from models.init import RecipeDB, Recipe
 
-
+# Various options available
 def main():
     db = RecipeDB('recipe.db')
     while True:
@@ -24,6 +24,7 @@ def main():
         else:
             print("Invalid choice")
 
+# CLI menu options
 def menu():
     print("Please select an option:")
     print("0. Exit the program")
@@ -34,6 +35,7 @@ def menu():
     print("5. Update recipe")
     print("6. Delete recipe")
 
+# Exiting the program
 def exit_program():
     print("Exiting program...")
     sys.exit()
@@ -54,6 +56,7 @@ def find_recipe_by_title(db):
     else:
         print("Recipe not found.")
 
+# Finding recipe by id
 def find_recipe_by_id(db):
     recipe_id = input("Enter the ID of the recipe: ")
     recipe = db.get_recipe_by_id(recipe_id)
@@ -62,6 +65,7 @@ def find_recipe_by_id(db):
     else:
         print("Recipe not found.")
 
+# Getting all the recipe details
 def print_recipe_details(recipe):
     print(f"ID: {recipe.id}")
     print(f"Title: {recipe.title}")
@@ -74,6 +78,7 @@ def print_recipe_details(recipe):
     print(f"Allergens: {recipe.allergens}")
     print(f"User ID: {recipe.user_id}")
 
+# creating a new recipe
 def create_recipe(db):
     print("Creating a new recipe:")
     title = input("Enter the title of the recipe: ")
@@ -93,7 +98,7 @@ def create_recipe(db):
     print("Recipe created successfully!")
 
 
-
+# updating a recipe
 def update_recipe(db):
     print("Updating an existing recipe:")
     recipe_id = int(input("Enter the ID of the recipe to update: "))
@@ -130,6 +135,7 @@ def update_recipe(db):
     else:
         print("Recipe not found.")
 
+# Deleting a recipe 
 def delete_recipe(db):
     print("Deleting an existing recipe:")
     recipe_id = int(input("Enter the ID of the recipe to delete: "))
