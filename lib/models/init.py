@@ -55,6 +55,23 @@ class RecipeDB:
         else:
             return None
         
+    def update_recipe(self, recipe: Recipe):
+        conn = self.create_connection()
+        if conn is not None:
+            cur = conn.cursor()
+            cur.execute("""
+                UPDATE recipe
+                SET title=?, instructions=?, category_id=?, cuisine_type=?, meal_type=?, 
+                    dietary_preferences=?, special_diets=?, allergens=?, user_id=?
+                WHERE id=?
+            """, (recipe.title, recipe.instructions, recipe.category_id, recipe.cuisine_type,
+                  recipe.meal_type, recipe.dietary_preferences, recipe.special_diets,
+                  recipe.allergens, recipe.user_id, recipe.id))
+            conn.commit()
+            conn.close()
+        else:
+            print("Error: Unable to establish database connection.")
+        
     def add_recipe(self, recipe):
         conn = self.create_connection()
         if conn is not None:
