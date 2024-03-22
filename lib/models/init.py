@@ -106,6 +106,55 @@ class RecipeDB:
         else:
             print("Error: Unable to establish database connection.")
 
+    def get_users(self) -> List[User]:
+        conn = self.create_connection()
+        if conn is not None:
+            cur = conn.cursor()
+            cur.execute("SELECT * FROM user")
+            rows = cur.fetchall()
+            users = [User(*row) for row in rows]
+            conn.close()
+            return users
+
+    def get_categories(self) -> List[Category]:
+        conn = self.create_connection()
+        if conn is not None:
+            cur = conn.cursor()
+            cur.execute("SELECT * FROM category")
+            rows = cur.fetchall()
+            categories = [Category(*row) for row in rows]
+            conn.close()
+            return categories
+
+    def get_meal_types(self) -> List[str]:
+        conn = self.create_connection()
+        if conn is not None:
+            cur = conn.cursor()
+            cur.execute("SELECT DISTINCT meal_type FROM recipe")
+            rows = cur.fetchall()
+            meal_types = [row[0] for row in rows]
+            conn.close()
+            return meal_types
+
+    def get_cuisine_types(self) -> List[str]:
+        conn = self.create_connection()
+        if conn is not None:
+            cur = conn.cursor()
+            cur.execute("SELECT DISTINCT cuisine_type FROM recipe")
+            rows = cur.fetchall()
+            cuisine_types = [row[0] for row in rows]
+            conn.close()
+            return cuisine_types
+
+    def get_ingredients(self) -> List[Ingredient]:
+        conn = self.create_connection()
+        if conn is not None:
+            cur = conn.cursor()
+            cur.execute("SELECT * FROM ingredient")
+            rows = cur.fetchall()
+            ingredients = [Ingredient(*row) for row in rows]
+            conn.close()
+            return ingredients
 
 if __name__ == "__main__":
     db = RecipeDB('recipe.db')

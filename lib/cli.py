@@ -1,7 +1,7 @@
 import sys 
 from models.init import RecipeDB, Recipe
 
-# Various options available
+# Various options available for my recipe organizer
 def main():
     db = RecipeDB('recipe.db')
     while True:
@@ -21,8 +21,19 @@ def main():
             update_recipe(db)
         elif choice == "6":
             delete_recipe(db)
+        elif choice == "7":
+            show_all_users(db)
+        elif choice == "8":
+            show_all_categories(db)
+        elif choice == "9":
+            show_all_meal_types(db)
+        elif choice == "10":
+            show_all_cuisine_types(db)
+        elif choice == "11":
+            show_all_ingredients(db)
         else:
             print("Invalid choice")
+
 
 # CLI menu options
 def menu():
@@ -34,6 +45,11 @@ def menu():
     print("4. Create recipe")
     print("5. Update recipe")
     print("6. Delete recipe")
+    print("7. Show all users")
+    print("8. Show all categories")
+    print("9. Show all meal types")
+    print("10. Show all cuisine types")
+    print("11. Show a list of ingredients")
 
 # Exiting the program
 def exit_program():
@@ -147,6 +163,51 @@ def delete_recipe(db):
             print("Recipe deleted successfully!")
     else:
         print("Recipe not found.")
+
+# Show all users
+def show_all_users(db):
+    users = db.get_users()
+    if users:
+        for user in users:
+            print(f"ID: {user.id}, Username: {user.username}, Role: {user.role}, Created At: {user.created_at}, Age: {user.age}, Gender: {user.gender}")
+    else:
+        print("No users found.")
+
+# Show all categories
+def show_all_categories(db):
+    categories = db.get_categories()
+    if categories:
+        for category in categories:
+            print(f"ID: {category.id}, Name: {category.name}")
+    else:
+        print("No categories found.")
+
+# Show all meal types
+def show_all_meal_types(db):
+    meal_types = db.get_meal_types()
+    if meal_types:
+        for meal_type in meal_types:
+            print(meal_type)
+    else:
+        print("No meal types found.")
+
+# Show all cuisine types
+def show_all_cuisine_types(db):
+    cuisine_types = db.get_cuisine_types()
+    if cuisine_types:
+        for cuisine_type in cuisine_types:
+            print(cuisine_type)
+    else:
+        print("No cuisine types found.")
+
+# Show a list of ingredients
+def show_all_ingredients(db):
+    ingredients = db.get_ingredients()
+    if ingredients:
+        for ingredient in ingredients:
+            print(f"ID: {ingredient.id}, Name: {ingredient.name}")
+    else:
+        print("No ingredients found.")
 
 if __name__ == "__main__":
     main()
