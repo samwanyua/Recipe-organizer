@@ -5,7 +5,7 @@ from models.recipe import Category
 from models.recipe import Ingredient
 from models.recipe import RecipeIngredient
 from models.recipe import User
-from typing import List, Tuple
+from typing import List, Tuple # here I want to import the List and Tuple types from the typing module.
 
 class RecipeDB:
     def __init__(self, db_file: str):
@@ -19,7 +19,7 @@ class RecipeDB:
             print(e)
         return None
 
-    def get_recipes(self) -> List[Recipe]:
+    def get_recipes(self) -> List[Recipe]: # indicates the return type of the function.  -->> type hinting
         conn = self.create_connection()
         if conn is not None:
             cur = conn.cursor()

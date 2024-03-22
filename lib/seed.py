@@ -30,7 +30,7 @@ def seed_database(db):
         Recipe(id=2, title="Grilled Chicken Sandwich", instructions="...", category_id=2, cuisine_type="American",
                meal_type="Lunch", dietary_preferences="", special_diets="", allergens="", user_id=1),
         Recipe(id=3, title="Chocolate Cake", instructions="...", category_id=4, cuisine_type="Dessert",
-               meal_type="Dessert", dietary_preferences="", special_diets="", allergens="", user_id=2)
+               meal_type="Dessert", dietary_preferences="", special_diets="", allergens="none", user_id=2)
     ]
     for recipe in recipes:
         db.add_recipe(recipe)
@@ -44,5 +44,5 @@ def seed_database(db):
         db.add_user(user)
 
 if __name__ == "__main__":
-    db = RecipeDB('recipe.db')
+    db = RecipeDB('recipe.db') #Instantiating
     seed_database(db)

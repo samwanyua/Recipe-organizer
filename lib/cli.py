@@ -1,4 +1,4 @@
-import sys 
+import sys # provides access to system-specific parameters and functions, such as command-line arguments
 from models.init import RecipeDB, Recipe
 
 # Various options available for my recipe organizer
@@ -35,7 +35,7 @@ def main():
             print("Invalid choice")
 
 
-# CLI menu options
+# CLI menu options for my Recipe organizer 
 def menu():
     print("Please select an option:")
     print("0. Exit the program")
@@ -51,12 +51,13 @@ def menu():
     print("10. Show all cuisine types")
     print("11. Show a list of ingredients")
 
-# Exiting the program
+# Exiting the program functionality
 def exit_program():
     print("Exiting program...")
     sys.exit()
 
-def list_recipes(db):
+# Listing all the recipes
+def list_recipes(db): # db is a parameter to access the database to retrieve information
     recipes = db.get_recipes()
     if recipes:
         for recipe in recipes:
@@ -64,6 +65,7 @@ def list_recipes(db):
     else:
         print("No recipes found.")
 
+# FInding recipes by title
 def find_recipe_by_title(db):
     title = input("Enter the title of the recipe: ")
     recipe = db.get_recipe_by_title(title)
@@ -120,7 +122,7 @@ def update_recipe(db):
     recipe_id = int(input("Enter the ID of the recipe to update: "))
     recipe = db.get_recipe_by_id(recipe_id)
     if recipe:
-        # Prompt user for updated details
+        # Prompt user for the areas he/she wants to update
         title = input("Enter the new title of the recipe: ")
         if title:
             recipe.title = title
