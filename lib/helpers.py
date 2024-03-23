@@ -205,3 +205,30 @@ class RecipeDB:
             conn.close()
             return ingredients
         return []
+    
+    def add_ingredient_to_recipe(self, recipe_id: int, ingredient_id: int, quantity: float, unit: str):
+        conn = self.create_connection()
+        if conn is not None:
+            cur = conn.cursor()
+            cur.execute("""
+                INSERT INTO recipe_ingredient (recipe_id, ingredient_id, quantity, unit)
+                VALUES (?, ?, ?, ?)
+            """, (recipe_id, ingredient_id, quantity, unit))
+            conn.commit()
+            conn.close()
+            
+    def get_ingredients_for_recipe(self, recipe_id: int) -> List[Ingredient]:
+        conn = self.create_connection()
+        if conn is not None:
+            cur = conn.cursor()
+            cur.execute("""
+                SELECT ingredient.*, recipe_ingredient.quantity, recipe_ingredient.unit
+                FROM ingredient
+                INNER JOIN recipe_ingredient ON ingredient.id = recipe_ingredient.ingredient_id
+                WHERE recipe_ingredient.recipe_id = ?
+            """, (recipe_id,))
+            rows = cur.fetchall()
+            ingredients = [Ingredient(*row) for row in rows]
+            conn.close()
+            return ingredients
+        return []

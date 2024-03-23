@@ -17,10 +17,11 @@ class Category:
         self.name = name
 
 class Ingredient:
-    def __init__(self, id: int, name: str):
+    def __init__(self, id, name, quantity=None, unit=None):
         self.id = id
         self.name = name
-
+        self.quantity = quantity
+        self.unit = unit
 class RecipeIngredient:
     def __init__(self, recipe_id: int, ingredient_id: int, quantity: float, unit: str):
         self.recipe_id = recipe_id

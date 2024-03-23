@@ -31,12 +31,17 @@ def main():
             show_all_cuisine_types(db)
         elif choice == "11":
             show_all_ingredients(db)
+        elif choice == "12":
+            add_ingredient_to_recipe(db)
+        elif choice == "13":
+            get_ingredients_for_recipe(db)
         else:
             print("Invalid choice")
+        
 
 def menu():
     print("Please select an option:")
-    print("0. Exit the program")
+    print("0. Exit the Recipe Program")
     print("1. List all recipes")
     print("2. Find recipe by title")
     print("3. Find recipe by id")
@@ -48,9 +53,11 @@ def menu():
     print("9. Show all meal types")
     print("10. Show all cuisine types")
     print("11. Show a list of ingredients")
+    print("12. Add ingredient to recipe")
+    print("13. Get ingredients for recipe")
 
 def exit_program():
-    print("Exiting program...")
+    print("Exiting  recipe program...")
     sys.exit()
 
 def list_recipes(db):
@@ -193,6 +200,24 @@ def show_all_ingredients(db):
             print(f"ID: {ingredient.id}, Name: {ingredient.name}")
     else:
         print("No ingredients found.")
+
+def add_ingredient_to_recipe(db):
+    recipe_id = int(input("Enter the ID of the recipe to add ingredient: "))
+    ingredient_id = int(input("Enter the ID of the ingredient to add: "))
+    quantity = float(input("Enter the quantity of the ingredient: "))
+    unit = input("Enter the unit of the ingredient: ")
+    db.add_ingredient_to_recipe(recipe_id, ingredient_id, quantity, unit)
+    print("Ingredient added to recipe successfully!")
+
+def get_ingredients_for_recipe(db):
+    recipe_id = int(input("Enter the ID of the recipe to get ingredients: "))
+    ingredients = db.get_ingredients_for_recipe(recipe_id)
+    if ingredients:
+        print("Ingredients for Recipe:")
+        for ingredient in ingredients:
+            print(f"{ingredient.name}: {ingredient.quantity} {ingredient.unit}")
+    else:
+        print("No ingredients found for the recipe.")
 
 
 
