@@ -78,7 +78,7 @@ class RecipeDB:
         except Error as e:
             print(e)
 
-    def get_recipes(self) -> List[Recipe]:
+    def get_recipes(self) -> List[Recipe]: # Here we are returning List[Recipe] - a list of Recipe objects representing the recipes.
         conn = self.create_connection()
         if conn is not None:
             cur = conn.cursor()
