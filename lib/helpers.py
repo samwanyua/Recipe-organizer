@@ -1,12 +1,12 @@
 import sqlite3
 from sqlite3 import Error
-from typing import List  # Add this line to import List type
+from typing import List 
 from models import Recipe, Category, Ingredient, User
 
 class RecipeDB:
     def __init__(self, db_file='recipe.db'): 
         self.db_file = db_file
-        self.create_tables()  # Call create_tables method during initialization
+        self.create_tables()  
 
     def create_connection(self):
         try:
@@ -216,7 +216,7 @@ class RecipeDB:
             """, (recipe_id, ingredient_id, quantity, unit))
             conn.commit()
             conn.close()
-            
+
     def get_ingredients_for_recipe(self, recipe_id: int) -> List[Ingredient]:
         conn = self.create_connection()
         if conn is not None:
