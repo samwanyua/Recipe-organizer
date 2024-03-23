@@ -1,7 +1,7 @@
-import sys # provides access to system-specific parameters and functions, such as command-line arguments
-from models.init import RecipeDB, Recipe
+import sys
+from models import Recipe
+from helpers import RecipeDB
 
-# Various options available for my recipe organizer
 def main():
     db = RecipeDB('recipe.db')
     while True:
@@ -34,8 +34,6 @@ def main():
         else:
             print("Invalid choice")
 
-
-# CLI menu options for my Recipe organizer 
 def menu():
     print("Please select an option:")
     print("0. Exit the program")
@@ -51,13 +49,11 @@ def menu():
     print("10. Show all cuisine types")
     print("11. Show a list of ingredients")
 
-# Exiting the program functionality
 def exit_program():
     print("Exiting program...")
     sys.exit()
 
-# Listing all the recipes
-def list_recipes(db): # db is a parameter to access the database to retrieve information
+def list_recipes(db):
     recipes = db.get_recipes()
     if recipes:
         for recipe in recipes:
@@ -65,7 +61,6 @@ def list_recipes(db): # db is a parameter to access the database to retrieve inf
     else:
         print("No recipes found.")
 
-# FInding recipes by title
 def find_recipe_by_title(db):
     title = input("Enter the title of the recipe: ")
     recipe = db.get_recipe_by_title(title)
@@ -74,7 +69,6 @@ def find_recipe_by_title(db):
     else:
         print("Recipe not found.")
 
-# Finding recipe by id
 def find_recipe_by_id(db):
     recipe_id = input("Enter the ID of the recipe: ")
     recipe = db.get_recipe_by_id(recipe_id)
@@ -83,7 +77,6 @@ def find_recipe_by_id(db):
     else:
         print("Recipe not found.")
 
-# Getting all the recipe details
 def print_recipe_details(recipe):
     print(f"ID: {recipe.id}")
     print(f"Title: {recipe.title}")
@@ -96,7 +89,6 @@ def print_recipe_details(recipe):
     print(f"Allergens: {recipe.allergens}")
     print(f"User ID: {recipe.user_id}")
 
-# creating a new recipe
 def create_recipe(db):
     print("Creating a new recipe:")
     title = input("Enter the title of the recipe: ")
@@ -115,14 +107,11 @@ def create_recipe(db):
     db.add_recipe(new_recipe)
     print("Recipe created successfully!")
 
-
-# updating a recipe
 def update_recipe(db):
     print("Updating an existing recipe:")
     recipe_id = int(input("Enter the ID of the recipe to update: "))
     recipe = db.get_recipe_by_id(recipe_id)
     if recipe:
-        # Prompt user for the areas he/she wants to update
         title = input("Enter the new title of the recipe: ")
         if title:
             recipe.title = title
@@ -153,7 +142,6 @@ def update_recipe(db):
     else:
         print("Recipe not found.")
 
-# Deleting a recipe 
 def delete_recipe(db):
     print("Deleting an existing recipe:")
     recipe_id = int(input("Enter the ID of the recipe to delete: "))
@@ -166,7 +154,6 @@ def delete_recipe(db):
     else:
         print("Recipe not found.")
 
-# Show all users
 def show_all_users(db):
     users = db.get_users()
     if users:
@@ -175,7 +162,6 @@ def show_all_users(db):
     else:
         print("No users found.")
 
-# Show all categories
 def show_all_categories(db):
     categories = db.get_categories()
     if categories:
@@ -184,7 +170,6 @@ def show_all_categories(db):
     else:
         print("No categories found.")
 
-# Show all meal types
 def show_all_meal_types(db):
     meal_types = db.get_meal_types()
     if meal_types:
@@ -193,7 +178,6 @@ def show_all_meal_types(db):
     else:
         print("No meal types found.")
 
-# Show all cuisine types
 def show_all_cuisine_types(db):
     cuisine_types = db.get_cuisine_types()
     if cuisine_types:
@@ -202,7 +186,6 @@ def show_all_cuisine_types(db):
     else:
         print("No cuisine types found.")
 
-# Show a list of ingredients
 def show_all_ingredients(db):
     ingredients = db.get_ingredients()
     if ingredients:
@@ -210,6 +193,10 @@ def show_all_ingredients(db):
             print(f"ID: {ingredient.id}, Name: {ingredient.name}")
     else:
         print("No ingredients found.")
+
+
+
+
 
 if __name__ == "__main__":
     main()
