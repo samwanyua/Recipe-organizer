@@ -56,10 +56,12 @@ def menu():
     print("12. Add ingredient to recipe")
     print("13. Get ingredients for recipe")
 
+# To exit recipe program
 def exit_program():
     print("Exiting  recipe program...")
-    sys.exit()
+    sys.exit() #Exit the program.
 
+# Here we are listing all recipes in our database
 def list_recipes(db):
     recipes = db.get_recipes()
     if recipes:
@@ -68,6 +70,7 @@ def list_recipes(db):
     else:
         print("No recipes found.")
 
+# Method to find recipe by recipe title
 def find_recipe_by_title(db):
     title = input("Enter the title of the recipe: ")
     recipe = db.get_recipe_by_title(title)
@@ -76,6 +79,7 @@ def find_recipe_by_title(db):
     else:
         print("Recipe not found.")
 
+# Method to find recipe by recipe id
 def find_recipe_by_id(db):
     recipe_id = input("Enter the ID of the recipe: ")
     recipe = db.get_recipe_by_id(recipe_id)
@@ -84,6 +88,7 @@ def find_recipe_by_id(db):
     else:
         print("Recipe not found.")
 
+# Getting all the recipe details
 def print_recipe_details(recipe):
     print(f"ID: {recipe.id}")
     print(f"Title: {recipe.title}")
@@ -96,6 +101,8 @@ def print_recipe_details(recipe):
     print(f"Allergens: {recipe.allergens}")
     print(f"User ID: {recipe.user_id}")
 
+# CRUD Operations
+# Creating a recipe
 def create_recipe(db):
     print("Creating a new recipe:")
     title = input("Enter the title of the recipe: ")
@@ -114,6 +121,7 @@ def create_recipe(db):
     db.add_recipe(new_recipe)
     print("Recipe created successfully!")
 
+# Updating a recipe
 def update_recipe(db):
     print("Updating an existing recipe:")
     recipe_id = int(input("Enter the ID of the recipe to update: "))
@@ -149,6 +157,7 @@ def update_recipe(db):
     else:
         print("Recipe not found.")
 
+# Deleting a recipe
 def delete_recipe(db):
     print("Deleting an existing recipe:")
     recipe_id = int(input("Enter the ID of the recipe to delete: "))
@@ -161,6 +170,7 @@ def delete_recipe(db):
     else:
         print("Recipe not found.")
 
+# To show all the users
 def show_all_users(db):
     users = db.get_users()
     if users:
@@ -169,6 +179,7 @@ def show_all_users(db):
     else:
         print("No users found.")
 
+# Method to show/display all categories
 def show_all_categories(db):
     categories = db.get_categories()
     if categories:
@@ -177,6 +188,7 @@ def show_all_categories(db):
     else:
         print("No categories found.")
 
+# Method to display all meal types
 def show_all_meal_types(db):
     meal_types = db.get_meal_types()
     if meal_types:
@@ -185,6 +197,7 @@ def show_all_meal_types(db):
     else:
         print("No meal types found.")
 
+# Method to show all the cuisine types available
 def show_all_cuisine_types(db):
     cuisine_types = db.get_cuisine_types()
     if cuisine_types:
@@ -193,6 +206,7 @@ def show_all_cuisine_types(db):
     else:
         print("No cuisine types found.")
 
+# Method to show all ingridients
 def show_all_ingredients(db):
     ingredients = db.get_ingredients()
     if ingredients:
@@ -201,6 +215,7 @@ def show_all_ingredients(db):
     else:
         print("No ingredients found.")
 
+# Method to add ingridients to a recipe
 def add_ingredient_to_recipe(db):
     recipe_id = int(input("Enter the ID of the recipe to add ingredient: "))
     ingredient_id = int(input("Enter the ID of the ingredient to add: "))
@@ -209,6 +224,7 @@ def add_ingredient_to_recipe(db):
     db.add_ingredient_to_recipe(recipe_id, ingredient_id, quantity, unit)
     print("Ingredient added to recipe successfully!")
 
+# Method to get the ingridients of a recipe
 def get_ingredients_for_recipe(db):
     recipe_id = int(input("Enter the ID of the recipe to get ingredients: "))
     ingredients = db.get_ingredients_for_recipe(recipe_id)
@@ -220,8 +236,6 @@ def get_ingredients_for_recipe(db):
         print("No ingredients found for the recipe.")
 
 
-
-
-
+# Execute the main function since this is the script  being ran directly
 if __name__ == "__main__":
     main()

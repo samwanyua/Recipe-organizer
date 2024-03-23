@@ -156,7 +156,8 @@ class RecipeDB:
         if conn is not None:
             cur = conn.cursor()
             cur.execute("SELECT * FROM user")
-            rows = cur.fetchall()
+            rows = cur.fetchall() # Fetch all rows of the query result from the cursor
+            # Create User objects from the rows fetched from the database and store them in a list
             users = [User(*row) for row in rows]
             conn.close()
             return users
@@ -166,7 +167,7 @@ class RecipeDB:
         conn = self.create_connection()
         if conn is not None:
             cur = conn.cursor()
-            cur.execute("SELECT * FROM category")
+            cur.execute("SELECT * FROM category") # Execute a SQL query to select all columns from the 'user' table
             rows = cur.fetchall()
             categories = [Category(*row) for row in rows]
             conn.close()
@@ -179,6 +180,7 @@ class RecipeDB:
             cur = conn.cursor()
             cur.execute("SELECT DISTINCT meal_type FROM recipe")
             rows = cur.fetchall()
+            # Extract the first element of each row in the 'rows' list, representing meal types
             meal_types = [row[0] for row in rows]
             conn.close()
             return meal_types
@@ -201,6 +203,7 @@ class RecipeDB:
             cur = conn.cursor()
             cur.execute("SELECT * FROM ingredient")
             rows = cur.fetchall()
+            # Create Ingredient objects by unpacking each row and passing the values as arguments to the Ingredient constructor
             ingredients = [Ingredient(*row) for row in rows]
             conn.close()
             return ingredients
